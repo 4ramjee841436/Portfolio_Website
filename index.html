@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ramjee's Full Stack Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Global Reset and Base Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #0b0b33; /* Deep Blue Background */
+      color: white;
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+      letter-spacing: 0.02em; /* Subtle letter-spacing for modern look */
+    }
+
+    /* Primary Accent Color */
+    :root {
+      --primary-accent: #a48cf2; /* Purple/Lavender */
+      --secondary-accent: #4ade80; /* Neon Green for highlights */
+      --nav-bg: #151539;
+      --section-bg: #0b0b33;
+      --card-bg: #1e1e40;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between; /* Adjusted for better spacing */
+      align-items: center;
+      height: 80px;
+      background-color: var(--nav-bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 5%; /* Added padding for a professional touch */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    nav ul { display: flex; }
+    nav ul li { list-style: none; margin: 0 15px; }
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s color ease-in-out;
+    }
+    nav ul li a:hover { color: var(--primary-accent); }
+    .left { font-size: 1.5rem; font-weight: 700; }
+
+    /* Section base */
+    section {
+      padding: 80px 10%;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    section.active { display: flex; }
+    h2 { font-size: 2.5rem; margin-bottom: 20px; color: var(--primary-accent); }
+    .section-title-line { width: 100px; height: 3px; background-color: var(--secondary-accent); margin-bottom: 40px; }
+
+
+    /* Home Section */
+    #home {
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      min-height: calc(100vh - 80px); /* Height minus navbar */
+    }
+    #home .leftSection {
+      width: 45%;
+      font-size: 2rem;
+      text-align: left; /* Aligned text left for better readability */
+    }
+    #home .name { font-size: 3rem; font-weight: 700; color: var(--primary-accent); }
+    #home .tagline { font-size: 1.8rem; margin-top: 5px; }
+    #element { color: var(--secondary-accent); font-weight: 600; }
+    
+    /* Profile Picture Styling */
+    #home .profile-pic {
+      width: 280px; /* Adjust size as needed */
+      height: 280px; /* Keep height same as width for perfect circle */
+      border-radius: 50%; /* Makes the image circular */
+      object-fit: cover; /* Ensures image covers the area without distortion */
+      border: 5px solid var(--primary-accent); /* A nice border */
+      box-shadow: 0 0 20px rgba(164, 140, 242, 0.6); /* Soft glow */
+      margin-top: 40px;
+      margin-left: 20px; /* Slight margin if needed */
+    }
+
+
+    /* Buttons (Modern Design) */
+    .buttons { margin-top: 40px; }
+    .btn {
+      padding: 12px 30px;
+      margin: 0 10px;
+      border: 2px solid var(--primary-accent);
+      border-radius: 8px;
+      background: transparent;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s all ease-in-out;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .btn:hover {
+      background-color: var(--primary-accent);
+      color: var(--nav-bg);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 15px rgba(164, 140, 242, 0.4);
+    }
+
+    /* About Section */
+    #about p {
+      color: #c1c1c1;
+      font-size: 1.1rem;
+      max-width: 900px;
+      line-height: 1.8;
+      text-align: center; /* Centered text is often better for single paragraphs */
+      margin-bottom: 30px;
+    }
+
+    /* Skills Grid */
+    .skills-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        max-width: 1000px;
+        margin-top: 20px;
+    }
+    .skill-badge {
+        background-color: var(--card-bg);
+        color: white;
+        padding: 8px 18px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 1px solid var(--secondary-accent);
+        transition: 0.3s;
+    }
+    .skill-badge:hover {
+        background-color: var(--secondary-accent);
+        color: var(--nav-bg);
+        transform: scale(1.05);
+    }
+
+    /* Resume Section */
+    #resume img {
+      width: 80%;
+      max-width: 900px;
+      border: 3px solid var(--primary-accent);
+      border-radius: 10px;
+      margin-top: 25px;
+      box-shadow: 0 0 30px rgba(156,151,241,0.5);
+    }
+
+    /* Projects Section */
+    .project-box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 30px;
+      max-width: 1200px;
+    }
+    .project-card {
+      background-color: var(--card-bg);
+      width: 320px;
+      padding: 25px;
+      border-radius: 12px;
+      transition: 0.3s all ease-in-out;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      text-align: left;
+      border-bottom: 5px solid var(--secondary-accent); /* Accent line for emphasis */
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      background-color: #2a2a50;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .project-card h3 { color: var(--primary-accent); margin-bottom: 10px; font-size: 1.4rem; }
+    .project-card p { color: #c1c1c1; font-size: 0.95rem; margin-bottom: 12px; }
+    .project-card a {
+      color: var(--secondary-accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .project-card a:hover { text-decoration: underline; color: white; }
+
+    /* Contact Section */
+    #contact {
+        padding-bottom: 120px; /* Extra padding above footer */
+    }
+    #contact p {
+      font-size: 1.1rem;
+      color: #c1c1c1;
+      margin: 12px 0;
+    }
+    #contact a {
+      color: var(--primary-accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    #contact a:hover { color: var(--secondary-accent); }
+
+    footer {
+      background-color: var(--nav-bg);
+      height: 60px;
+      text-align: center;
+      color: #c1c1c1;
+      padding-top: 20px;
+      font-size: 0.9rem;
+      border-top: 1px solid #333;
+    }
+
+    @media (max-width: 900px) {
+      #home { flex-direction: column; text-align: center; }
+      #home .leftSection { width: 90%; text-align: center; font-size: 1.5rem; }
+      #home .name { font-size: 2.5rem; }
+      #home .tagline { font-size: 1.5rem; }
+      #home .profile-pic { width: 200px; height: 200px; margin: 20px auto; } /* Adjust for mobile */
+      nav { padding: 0 2%; }
+      nav ul { margin-left: 10px; }
+      nav ul li { margin: 0 8px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="left">Ramjee's Portfolio</div>
+      <div class="right">
+        <ul>
+          <li><a href="#home" data-section="home">Home</a></li>
+          <li><a href="#about" data-section="about">About & Skills</a></li>
+          <li><a href="#resume" data-section="resume">Resume</a></li>
+          <li><a href="#projects" data-section="projects">Projects</a></li>
+          <li><a href="#contact" data-section="contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <div class="leftSection">
+        <div class="tagline">Hi, My name is</div>
+        <div class="name">Ramjee Upadhyay</div>
+        <div class="tagline">and I am a passionate</div>
+        <span id="element"></span>
+        <div class="buttons">
+          <button class="btn" onclick="navigateTo('resume')">View Resume</button>
+          <button class="btn" onclick="window.open('https://github.com/4ramjee841436', '_blank')">Visit GitHub</button>
+        </div>
+      </div>
+      <img src="Ramjee.jpg" alt="Ramjee Upadhyay Profile" class="profile-pic" /> 
+    </section>
+
+    <section id="about">
+      <h2>About Me & Skills</h2>
+      <div class="section-title-line"></div>
+      <p>
+        I’m a **Full Stack Developer** specializing in **Java and React.js**, driven by a passion for building efficient, scalable, and secure web applications. 
+        I thrive on tackling complex problems and delivering high-quality, production-ready code. My core expertise lies in designing Java-based web solutions 
+        using **Spring Boot** and implementing modern, responsive frontend interfaces with **React**.
+      </p>
+      <p>
+        Currently, I am focusing on microservices architecture, exploring advanced features of Spring Cloud and integrating **Docker** and **Kubernetes** into my workflows. 
+        I am actively seeking opportunities to contribute to challenging projects and enhance my knowledge in distributed systems and secure backend development.
+      </p>
+
+      <h3 style="color: var(--secondary-accent); margin-top: 40px; margin-bottom: 20px;">Technical Stack</h3>
+      <div class="skills-container">
+        <div class="skill-badge">Java (Core & DSA)</div>
+        <div class="skill-badge">Object-Oriented Programming (OOP)</div>
+        <div class="skill-badge">Spring Boot</div>
+        <div class="skill-badge">Spring Security</div>
+        <div class="skill-badge">RESTful APIs</div>
+        <div class="skill-badge">Hibernate/JPA</div>
+        <div class="skill-badge">React.js</div>
+        <div class="skill-badge">JavaScript (ES6+)</div>
+        <div class="skill-badge">Redux</div>
+        <div class="skill-badge">HTML5 & CSS3</div>
+        <div class="skill-badge">MySQL</div>
+        <div class="skill-badge">MongoDB</div>
+        <div class="skill-badge">Docker</div>
+        <div class="skill-badge">Git & GitHub</div>
+      </div>
+    </section>
+
+    <section id="resume">
+      <h2>My Resume</h2>
+      <div class="section-title-line"></div>
+      <img src="RAMJEE_CSE.jpg" alt="Ramjee Upadhyay Resume Preview"> 
+      <div class="buttons">
+        <button class="btn" onclick="window.open('RAMJEE_CSE.pdf', '_blank')">Download Resume (PDF)</button>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>My Projects</h2>
+      <div class="section-title-line"></div>
+      <div class="project-box">
+          
+        <div class="project-card">
+          <h3>Online Banking System (Security Focused)</h3>
+          <p><strong>Tech Stack:</strong> Spring Boot, **Spring Security**, MySQL, Hibernate</p>
+          <p>
+            Designed and implemented a secure banking platform with features like account creation, fund transfers, and balance checks. **Integrated Spring Security** for robust user authentication (JWT/OAuth2) and authorization, ensuring all financial transactions are logged and protected against common vulnerabilities.
+          </p>
+          <a href="https://github.com/4ramjee841436" target="_blank">View on GitHub →</a>
+        </div>
+          
+        <div class="project-card">
+          <h3>E-Commerce Store Frontend (React/Redux)</h3>
+          <p><strong>Tech Stack:</strong> **React.js, Redux**, FakeStore API, React Router</p>
+          <p>
+            Developed a modern, single-page e-commerce interface. **Implemented Redux for global state management** (shopping cart, product filtering) to ensure seamless updates across components. Features include a detailed product listing, dynamic filtering, and a multi-step checkout process.
+          </p>
+          <a href="https://github.com/4ramjee841436" target="_blank">View on GitHub →</a>
+        </div>
+
+        <div class="project-card">
+          <h3>Job Application Portal (Microservices Concept)</h3>
+          <p><strong>Tech Stack:</strong> React.js, Spring Boot, MongoDB</p>
+          <p>
+            Developed a full-featured Job Portal using a microservices concept. **Implemented a high-performance, skill-based filtering API** using Spring Boot and MongoDB, resulting in a **40% reduction in applicant processing time**. Features include real-time job posting, resume parsing, and applicant tracking systems.
+          </p>
+          <a href="https://github.com/4ramjee841436" target="_blank">View on GitHub →</a>
+        </div>
+
+        <div class="project-card">
+          <h3>E-Commerce Management System (Legacy Modernization)</h3>
+          <p><strong>Tech Stack:</strong> Java, Servlets, JSP, JDBC, MySQL, Bootstrap</p>
+          <p>
+            Designed a comprehensive **MVC architecture** for product and inventory management. Focused on **data integrity and transactional safety** with MySQL and JDBC. Includes secure user authentication, order tracking, and an admin panel for real-time stock alerts.
+          </p>
+          <a href="https://github.com/4ramjee841436" target="_blank">View on GitHub →</a>
+        </div>
+
+        <div class="project-card">
+          <h3>Online Examination System (JDBC Focus)</h3>
+          <p><strong>Tech Stack:</strong> JDBC, HTML, CSS, MySQL</p>
+          <p>
+            Built a dynamic exam portal demonstrating strong backend connectivity and database interaction. The system automatically fetches questions, evaluates answers, and **persists results using optimized JDBC connections**. Includes both student and secure administrator dashboards.
+          </p>
+          <a href="https://github.com/4ramjee841436" target="_blank">View on GitHub →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Get In Touch</h2>
+      <div class="section-title-line"></div>
+      <p style="margin-bottom: 30px;">I'm actively looking for full-stack developer roles and open to collaboration. Reach out anytime!</p>
+      <p><strong>Email:</strong> <a href="mailto:4ramjee841436@gmail.com">4ramjee841436@gmail.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+917370803622">+91 7370803622</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ramjee-upadhyay-bb395b278" target="_blank">linkedin.com/in/ramjee-upadhyay...</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/4ramjee841436" target="_blank">github.com/4ramjee841436</a></p>
+    </section>
+  </main>
+
+  <footer>
+    Copyright © 2025 ramjeeportfolio.com | All Rights Reserved
+  </footer>
+
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+  <script>
+    // Typed.js Initialization
+    var typed = new Typed("#element", {
+      strings: ["Spring Boot Backend Developer", "React.js UI Specialist", "Cloud-Ready Full Stack Developer"],
+      typeSpeed: 60,
+      backSpeed: 40,
+      loop: true,
+    });
+
+    // ----------------------------------------------------
+    // Single-Page Application (SPA) Routing Logic
+    // ----------------------------------------------------
+
+    const sections = document.querySelectorAll("section");
+
+    function showSection(sectionId) {
+      sections.forEach(sec => sec.classList.remove("active"));
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.classList.add("active");
+        window.scrollTo({ top: 0, behavior: "smooth" }); 
+      } else {
+        document.getElementById('home').classList.add("active");
+      }
+    }
+
+    function navigateTo(sectionId, isInitialLoad = false) {
+      if (!isInitialLoad) {
+        window.history.pushState({ section: sectionId }, "", `#${sectionId}`); 
+      }
+      showSection(sectionId);
+    }
+
+    // 1. Initial Load
+    document.addEventListener("DOMContentLoaded", () => {
+      let initialSection = window.location.hash.substring(1) || 'home';
+      if (!document.getElementById(initialSection)) {
+        initialSection = 'home';
+      }
+      window.history.replaceState({ section: initialSection }, "", `#${initialSection}`);
+      showSection(initialSection);
+    });
+
+    // 2. Navigation Clicks
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        const sectionId = e.target.getAttribute('data-section');
+        navigateTo(sectionId);
+      });
+    });
+
+    // 3. Browser Back/Forward Button Support
+    window.addEventListener('popstate', () => {
+      const sectionId = window.location.hash.substring(1) || 'home';
+      showSection(sectionId);
+    });
+  </script>
+</body>

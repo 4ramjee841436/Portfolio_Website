@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ramjee's Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #0b0b33;
+      color: white;
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 80px;
+      background-color: #151539;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav ul { display: flex; }
+    nav ul li {
+      list-style: none;
+      margin: 0 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    nav ul li a:hover { color: #9c97f1; }
+    .left { font-size: 1.4rem; font-weight: 600; }
+
+    /* Section base */
+    section {
+      min-height: 100vh;
+      padding: 80px 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Hero Section */
+    #home {
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    #home .leftSection {
+      width: 45%;
+      font-size: 2.3rem;
+    }
+    .purple { color: #a48cf2; }
+    #element { color: #b197fc; font-weight: 600; }
+    #home img {
+      width: 350px;
+      margin-top: 40px;
+    }
+    .buttons {
+      margin-top: 30px;
+    }
+    .btn {
+      padding: 10px 25px;
+      margin: 0 10px;
+      border: 2px solid #9c97f1;
+      border-radius: 6px;
+      background: transparent;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background-color: #9c97f1;
+      color: #0b0b33;
+      transform: scale(1.05);
+    }
+
+    /* About Section */
+    #about p {
+      color: #c1c1c1;
+      font-size: 1.1rem;
+      max-width: 700px;
+      line-height: 1.7;
+    }
+
+    /* Resume Section */
+    #resume img {
+      width: 80%;
+      max-width: 900px;
+      border: 2px solid #9c97f1;
+      border-radius: 10px;
+      margin-top: 25px;
+      box-shadow: 0 0 20px rgba(156,151,241,0.3);
+    }
+
+    /* Projects Section */
+    .project-box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .project-card {
+      background-color: #151539;
+      width: 280px;
+      padding: 20px;
+      border-radius: 12px;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    }
+    .project-card:hover { transform: translateY(-10px); }
+    .project-card h3 { color: #9c97f1; margin-bottom: 10px; }
+    .project-card a {
+      color: #9c97f1;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Contact Section */
+    #contact p {
+      font-size: 1.1rem;
+      color: #c1c1c1;
+      margin: 8px 0;
+    }
+    #contact a {
+      color: #9c97f1;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer {
+      background-color: #151539;
+      height: 80px;
+      text-align: center;
+      color: #c1c1c1;
+      padding-top: 25px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      #home {
+        flex-direction: column;
+        text-align: center;
+      }
+      #home .leftSection { width: 90%; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="left">Ramjee's Portfolio</div>
+      <div class="right">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home">
+    <div class="leftSection">
+      Hi, My name is <span class="purple">Ramjee Upadhyay</span>
+      <div>and I am a passionate</div>
+      <span id="element"></span>
+      <div class="buttons">
+        <button class="btn" onclick="window.open('RAMJEE_CSE_page-0001.jpg')">View Resume</button>
+        <button class="btn" onclick="window.open('https://github.com/4ramjee841436')">Visit GitHub</button>
+      </div>
+    </div>
+    <img src="bg.png" alt="Developer Image" />
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I’m a front-end and machine learning developer who enjoys building interactive, clean, and modern websites.  
+      Skilled in HTML, CSS, JavaScript, React, Python, and Flask — I aim to combine creativity and logic  
+      to create meaningful web applications.  
+      Currently, I’m exploring full-stack development and AI integration in real-world projects.
+    </p>
+  </section>
+
+  <!-- Resume Section -->
+  <section id="resume">
+    <h2>My Resume</h2>
+    <img src="RAMJEE_CSE.jpg" alt="Ramjee Upadhyay Resume">
+    <div class="buttons">
+      <button class="btn" onclick="window.open('RAMJEE_CSE.jpg')">Download Resume</button>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-box">
+      <div class="project-card">
+        <h3>Crop Disease Detection</h3>
+        <p>AI-powered system to detect plant diseases using ML and Flask backend.</p>
+        <a href="https://github.com/4ramjee841436" target="_blank">View on GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>Personal portfolio website built with HTML, CSS, and JS.</p>
+        <a href="https://github.com/4ramjee841436" target="_blank">View on GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>To-Do App</h3>
+        <p>Simple and responsive task manager using React and local storage.</p>
+        <a href="https://github.com/4ramjee841436" target="_blank">View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>📞 <strong>Phone:</strong> <a href="tel:+917370803622">+91 7370803622</a></p>
+    <p>✉️ <strong>Email:</strong> <a href="mailto:4ramjee841436@gmail.com">4ramjee841436@gmail.com</a></p>
+    <p>💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ramjee-upadhyay-bb395b278" target="_blank">linkedin.com/in/ramjee-upadhyay-bb395b278</a></p>
+    <p>🐙 <strong>GitHub:</strong> <a href="https://github.com/4ramjee841436" target="_blank">github.com/4ramjee841436</a></p>
+  </section>
+
+  <footer>
+    Copyright © 2025 ramjeeportfolio.com | All Rights Reserved
+  </footer>
+
+  <!-- Typed.js animation -->
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script>
+    var typed = new Typed("#element", {
+      strings: ["Front-End Developer", "Python & ML Developer", "Web Designer"],
+      typeSpeed: 60,
+      backSpeed: 40,
+      loop: true,
+    });
+  </script>
+</body>
+</html>
