@@ -81,7 +81,7 @@ You can view my resume directly in the portfolio website.
 ## 🌍 Live Portfolio
 
 Once deployed via GitHub Pages:  
-👉 [https://4ramjee841436.github.io/Portfolio_Website/](https://4ramjee841436.github.io/Portfolio_Website/)
+👉 (https://ramjeeportfolio.netlify.app/)
 
 ---
 
